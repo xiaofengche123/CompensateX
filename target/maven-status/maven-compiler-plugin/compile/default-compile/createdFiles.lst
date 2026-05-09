@@ -1,0 +1,14 @@
+com\compensatex\annotation\Compensable.class
+com\compensatex\executor\AsyncRetryExecutor.class
+com\compensatex\demo\DemoService$DemoRequest.class
+com\compensatex\dubbo\DubboGenericInvoker.class
+com\compensatex\demo\DemoService.class
+com\compensatex\core\CompensateContext.class
+ManualTest.class
+com\compensatex\autoconfig\CompensateXAutoConfiguration.class
+com\compensatex\idempotent\IdempotentChecker.class
+com\compensatex\aop\CompensableInterceptor.class
+com\compensatex\demo\DemoClient.class
+com\compensatex\autoconfig\EnableCompensateX.class
+com\compensatex\core\CompensateManager.class
+com\compensatex\monitor\MetricCollector.class

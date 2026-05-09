@@ -1,0 +1,13 @@
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\core\CompensateManager.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\demo\DemoClient.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\annotation\Compensable.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\dubbo\DubboGenericInvoker.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\idempotent\IdempotentChecker.java
+C:\Users\26211\CompensateX\src\main\java\ManualTest.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\autoconfig\EnableCompensateX.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\executor\AsyncRetryExecutor.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\aop\CompensableInterceptor.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\autoconfig\CompensateXAutoConfiguration.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\monitor\MetricCollector.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\core\CompensateContext.java
+C:\Users\26211\CompensateX\src\main\java\com\compensatex\demo\DemoService.java
