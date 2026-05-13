@@ -164,4 +164,4 @@ public String createOrder(Request req) {
 | Actuator 集成 | 暴露自定义指标端点，对接 Prometheus + Grafana | P2 |
 | 单元测试 | 补充核心逻辑（幂等、重试、回退）的 JUnit 测试 | P2 |
 
-> 以上改进均已在个人 backlog 中规划，欢迎讨论具体实现细节。
+> 以上改进均已在个人 backlog 中规划
