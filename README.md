@@ -133,3 +133,35 @@ public String createOrder(Request req) {
 - 默认启用 Redis 幂等；当 Redis 不可用时会自动降级到内存模式。
 - Dubbo 泛化调用依赖运行时 Dubbo 配置（注册中心、协议等）。
 - `application.properties` 已提供最简示例配置。
+
+## 已知限制与改进方向
+
+### 当前版本局限
+
+1. **任务易失**  
+   补偿任务仅在内存队列中等待重试，应用重启后未完成的任务会丢失。
+
+2. **缺少分布式协调**  
+   多实例部署时，没有分布式锁保护，同一任务可能被多个节点重复补偿。
+
+3. **Dubbo 调用未设超时**  
+   `DubboGenericInvoker` 未配置超时时间，下游服务响应慢时可能导致线程堆积。
+
+4. **线程池参数硬编码**  
+   核心线程数、最大线程数、队列容量写死在代码中，无法通过配置文件调整。
+
+5. **无管理端点**  
+   监控指标未暴露为 HTTP 端点（如 `/actuator/compensate/metrics`），运维侧难以观察。
+
+### 后续优化计划
+
+| 改进项 | 方案 | 优先级 |
+|--------|------|--------|
+| 任务持久化 | 增加 `compensation_task` 表 + 定时扫描 Job | P0 |
+| 分布式锁 | Redis `SETNX` + 任务状态乐观锁，防止重复执行 | P0 |
+| Dubbo 超时 | 为 `ReferenceConfig` 设置 `setTimeout(3000)` | P1 |
+| 配置外置 | 线程池参数迁移到 `application.yml`，支持 `@ConfigurationProperties` | P1 |
+| Actuator 集成 | 暴露自定义指标端点，对接 Prometheus + Grafana | P2 |
+| 单元测试 | 补充核心逻辑（幂等、重试、回退）的 JUnit 测试 | P2 |
+
+> 以上改进均已在个人 backlog 中规划，欢迎讨论具体实现细节。
