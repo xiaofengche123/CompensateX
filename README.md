@@ -1,5 +1,9 @@
 # CompensateX
 
+[![CI](https://github.com/xiaofengche123/CompensateX/actions/workflows/ci.yml/badge.svg)](https://github.com/xiaofengche123/CompensateX/actions/workflows/ci.yml)
+[![Java 8+](https://img.shields.io/badge/Java-8%2B-orange)](https://adoptium.net/)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 CompensateX 是一个通用 RPC 补偿组件示例工程，基于 **Spring Boot 2.7.18** + **Dubbo 泛化调用**，提供以下能力：
 
 - `@Compensable` 注解驱动补偿流程
@@ -134,6 +138,20 @@ public String createOrder(Request req) {
 - Dubbo 泛化调用依赖运行时 Dubbo 配置（注册中心、协议等）。
 - `application.properties` 已提供最简示例配置。
 
+## 自动化测试
+
+```bash
+./mvnw test
+```
+
+当前最小测试集覆盖：
+
+- Redis 不可用时的内存幂等降级与重复拦截
+- 成功、失败、重试指标的累计快照
+- 补偿上下文参数的防御性复制与注解配置保留
+
+GitHub Actions 使用 JDK 8 执行 Maven 测试。
+
 ## 已知限制与改进方向
 
 ### 当前版本局限
@@ -162,6 +180,10 @@ public String createOrder(Request req) {
 | Dubbo 超时 | 为 `ReferenceConfig` 设置 `setTimeout(3000)` | P1 |
 | 配置外置 | 线程池参数迁移到 `application.yml`，支持 `@ConfigurationProperties` | P1 |
 | Actuator 集成 | 暴露自定义指标端点，对接 Prometheus + Grafana | P2 |
-| 单元测试 | 补充核心逻辑（幂等、重试、回退）的 JUnit 测试 | P2 |
+| 测试扩展 | 增加 Redis、Dubbo 与线程池拒绝策略的集成测试 | P2 |
 
 > 以上改进均已在个人 backlog 中规划
+
+## 许可证
+
+[Apache License 2.0](LICENSE)
